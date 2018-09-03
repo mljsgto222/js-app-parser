@@ -13,6 +13,7 @@ import { ResValue } from './res-value';
 const CHUNK_START_OFFSET = 8;
 
 export class Manifest {
+    platform = 'android';
     tagMap: {[ key in string]: {[key in string]: string}};
 
     constructor(xmlBytes: Uint8Array, resource: Resource) {

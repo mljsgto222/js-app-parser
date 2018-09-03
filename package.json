@@ -1,0 +1,38 @@
+{
+  "name": "js-app-parser",
+  "version": "1.0.0",
+  "description": "application package parser with javascript, for decoding android apk or ios ipa, getting application meta info.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/tsc "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mljsgto222/js-app-parser.git"
+  },
+  "keywords": [
+    "apk",
+    "ipa",
+    "parser"
+  ],
+  "author": "mljsgto222",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mljsgto222/js-app-parser/issues"
+  },
+  "homepage": "https://github.com/mljsgto222/js-app-parser#readme",
+  "dependencies": {
+    "crc-32": "^1.2.0",
+    "jszip": "^3.1.5",
+    "pako": "^1.0.6",
+    "text-encoding": "^0.6.4"
+  },
+  "devDependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "@types/jasmine": "^2.8.8",
+    "@types/node": "^10.9.4",
+    "typescript": "^3.0.3"
+  }
+}
