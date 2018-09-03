@@ -1,7 +1,7 @@
-import { Manifest } from "android/manifest";
-import { PList, parsePlist } from "ios/plist-parse";
-import { Resource } from "android/resource";
-import { parsePNG } from "ios/png-parse";
+import { Manifest } from "./android/manifest";
+import { PList, parsePlist } from "./ios/plist-parse";
+import { Resource } from "./android/resource";
+import { parsePNG } from "./ios/png-parse";
 const jszip = require('jszip');
 
 const MANIFEST_FILE_NAME = 'AndroidManifest.xml';
@@ -28,7 +28,7 @@ export class Application {
     versionName: string;
     package: string;
     icon?: string;
-    iconSteam?: Blob;
+    iconSteam?: Uint8Array;
     name: string;
     platform: string;
 
@@ -59,16 +59,14 @@ export class Application {
         return zip.files[RESOURCES_FILE_NAME].async('uint8array').then((result: Uint8Array) => {
             return new Resource(result);
         }).then((resource: Resource) => {
-            zip.files[MANIFEST_FILE_NAME].async('uint8array').then((result: Uint8Array) => {
+            return zip.files[MANIFEST_FILE_NAME].async('uint8array').then((result: Uint8Array) => {
                 return new Manifest(result, resource);
             });
         }).then((manifest: Manifest) => {
             const application = new Application(manifest);
             if (application.icon && zip.files[application.icon]) {
                 return zip.files[application.icon].async('uint8array').then((result: Uint8Array) => {
-                    application.iconSteam = new Blob([result], {
-                        type: getType(application.icon!)
-                    });
+                    application.iconSteam = result;
                     return application;
                 });
             } else {
@@ -92,9 +90,7 @@ export class Application {
                 }
                 if (icon) {
                     return icon.async('uint8array').then((result: Uint8Array) => {
-                        application.iconSteam = new Blob([parsePNG(result)], {
-                            type: getType(name)
-                        });
+                        application.iconSteam = parsePNG(result);
                         return application
                     });
                 }
