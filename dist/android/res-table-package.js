@@ -58,7 +58,7 @@ var ResTablePackage = /** @class */ (function () {
                                 resTableType[index] = entry;
                             }
                             else {
-                                if (tableType_1.resTableConfig.density > _this.tableMapCache[key].weight) {
+                                if (tableType_1.resTableConfig.density < 60000 && tableType_1.resTableConfig.density > _this.tableMapCache[key].weight) {
                                     resTableType[index] = entry;
                                 }
                             }
