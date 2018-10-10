@@ -68,7 +68,7 @@ export class ResTablePackage {
                                 } ;
                                 resTableType[index] = entry;
                             } else {
-                                if (tableType.resTableConfig.density > this.tableMapCache[key].weight) {
+                                if (tableType.resTableConfig.density < 60000 && tableType.resTableConfig.density > this.tableMapCache[key].weight) {
                                     resTableType[index] = entry;
                                 }
                             }
