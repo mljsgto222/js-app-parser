@@ -1,6 +1,6 @@
 {
   "name": "js-app-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "application package parser with javascript, for decoding android apk or ios ipa, getting application meta info.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
