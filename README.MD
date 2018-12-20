@@ -22,6 +22,8 @@ npm install --save js-app-parser
 
 ### Usage
 
+#### Node
+
 ```js
 const appParser = require('js-app-parser');
 const fs = require('fs');
@@ -32,6 +34,21 @@ appParser.Application.loadAsync(buffer).then(application => {
 }).catch(error => {
     // do when error
 });
+```
+
+#### Browser
+
+```html
+<input id="fileInput" type="file" onchange="onFileSelect()" />
+```
+
+```js
+function onFileSelect() {
+    const fileInput = document.getElementById('fileInput');
+    appParser.Application.loadAsync(fileInput.files[0]).then(application => {
+         // get application meta info
+    });
+}
 ```
 
 ### Application Class
